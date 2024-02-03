@@ -48,7 +48,7 @@ const ISRExample = ({ product }) => {
         props: {
           product: productData,
         },
-        revalidate: 30, // Re-fetch and re-generate the page every 60 seconds
+        revalidate: 1, // Re-fetch and re-generate the page every 60 seconds
       };
     } catch (error) {
       console.error('Error fetching product data:', error);
@@ -56,7 +56,7 @@ const ISRExample = ({ product }) => {
         props: {
           product: null,
         },
-        revalidate: 30, // Retry after 60 seconds even if there's an error
+        revalidate: 1, // Retry after 60 seconds even if there's an error
       };
     }
   }
