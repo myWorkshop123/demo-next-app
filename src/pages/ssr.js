@@ -14,6 +14,7 @@ const SSRExample = ({ product }) => {
   
   export async function getServerSideProps() {
     try {
+    //   const response = await fetch(`http://0.0.0.0:1234/products/1`);
       const response = await fetch(URL);
       const productData = await response.json();
   

@@ -1,6 +1,6 @@
 // pages/isr-example.js
 
-import { URL } from "@/constant";
+import { BASE, URL } from "@/constant";
 import getRandomInt from "@/util";
 
 const Comp1 = () => {
@@ -39,8 +39,8 @@ const ISRExample = ({ product }) => {
     //   const url = `https://dummyjson.com/products/${getRandomInt(1, 100)}`;
     //   const url = `https://dummyjson.com/todos/random`;
     //   const url = `http://localhost:3004/posts/1`;
-    //   const url = `h~ttp://0.0.0.0:1234/products/1`;
-      const url = `https://kartikkumar.pythonanywhere.com/products/1`;
+    //   const url = `http://0.0.0.0:1234/products/1`;
+      const url = `${BASE}/1`;
       const response = await fetch(url, requestOptions);
       const productData = await response.json();
   
@@ -48,7 +48,7 @@ const ISRExample = ({ product }) => {
         props: {
           product: productData,
         },
-        revalidate: 30, // Re-fetch and re-generate the page every 60 seconds
+        revalidate: 120, // Re-fetch and re-generate the page every 60 seconds
       };
     } catch (error) {
       console.error('Error fetching product data:', error);
@@ -56,7 +56,7 @@ const ISRExample = ({ product }) => {
         props: {
           product: null,
         },
-        revalidate: 30, // Retry after 60 seconds even if there's an error
+        revalidate: 120, // Retry after 60 seconds even if there's an error
       };
     }
   }
